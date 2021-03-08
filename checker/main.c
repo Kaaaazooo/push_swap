@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sabrugie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/08 12:32:48 by sabrugie          #+#    #+#             */
+/*   Updated: 2021/03/08 12:36:41 by sabrugie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 int	is_digit_str(char *str)
@@ -66,10 +78,13 @@ int	check_ilsts(t_ilst *a, t_ilst *b)
 	return (print_ret("OK\n", 0));
 }
 
-//	ft_printf("a :\n");
-//	print_stack(a);
-//	ft_printf("b :\n");
-//	print_stack(b);
+/*
+**	ft_printf("a :\n");
+**	print_stack(a);
+**	ft_printf("b :\n");
+**	print_stack(b);
+*/
+
 int	main(int ac, char **av)
 {
 	t_stack a;
@@ -96,6 +111,5 @@ int	main(int ac, char **av)
 	}
 	free(str);
 	check_ilsts(a.top, b.top);
-	str = NULL;
 	return (ilst_free_all(a.top) | ilst_free_all(b.top));
 }

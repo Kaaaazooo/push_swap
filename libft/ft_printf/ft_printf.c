@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sabrugie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/08 12:40:00 by sabrugie          #+#    #+#             */
+/*   Updated: 2021/03/08 12:47:41 by sabrugie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int		fill_buf(char conv, va_list ap, t_modif *mod)
@@ -43,15 +55,16 @@ void	get_modifiers(char *format, t_modif *mod, va_list ap)
 		get_field(&format, ap, mod);
 		get_precision(&format, ap, mod);
 		get_length_modif(&format, mod);
-		if (mod->flags & ZERO && mod->flags & PREC && *format != 'c' &&
-				*format != '%' && *format != 'f' && *format != 'e' && *format != 'g')
+		if (mod->flags & ZERO && mod->flags & PREC &&
+				*format != 'c' && *format != '%' && *format != 'f' &&
+				*format != 'e' && *format != 'g')
 			mod->flags -= ZERO;
 		if (fill_buf(*format++, ap, mod) < 0)
 			return ;
 	}
 }
 
-int	ft_printf(const char *format, ...)
+int		ft_printf(const char *format, ...)
 {
 	t_modif	mod;
 	va_list	ap;
@@ -61,10 +74,10 @@ int	ft_printf(const char *format, ...)
 	mod.flags = 0;
 	mod.count = 0;
 	va_start(ap, format);
-	get_modifiers((char *) format, &mod, ap);
+	get_modifiers((char *)format, &mod, ap);
 	if (mod.count > 0)
 		write(1, mod.buf, mod.count % BUF_SIZE == 0 ?
-			BUF_SIZE : mod.count % BUF_SIZE);
+				BUF_SIZE : mod.count % BUF_SIZE);
 	va_end(ap);
 	return (mod.count);
 }

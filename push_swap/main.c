@@ -29,19 +29,31 @@ int	ilst_count_sorted(t_ilst *lst)
 	return (i);
 }
 
-int	ilst_is_sorted(t_ilst *lst)
+int	ilst_is_sorted(uint8_t flag, t_ilst *lst)
 {
 	int64_t	val;
 	int64_t	i;
 
 	val = 0;
-	while (a)
+	if (flag == DESCENDING_ORDER)
+		val = INT64_MAX;
+	while (lst)
 	{
-		if (a->val > val)
-			val = a->val;
-		else if (a->val < val)
-			return (0);
-		a = a->next;
+		if (flag == ASCENDING_ORDER)
+		{
+			if (lst->val > val)
+				val = lst->val;
+			else if (lst->val < val)
+				return (0);
+		}
+		if (flag == DESCENDING_ORDER)
+		{
+			if (lst->val < val)
+				val = lst->val;
+			else if (lst->val > val)
+				return (0);
+		}
+		lst = lst->next;
 	}
 	return (1);
 }
@@ -85,6 +97,7 @@ void	sort_stack(t_stack **a, t_stack **b)
 		rotate_or_swap(a, b);
 	else if (end->val == smallest)
 		r_rotate((*a)->top);
+}
 
 int	main(int ac, char **av)
 {
@@ -102,7 +115,7 @@ int	main(int ac, char **av)
 	}
 	if (a == NULL)
 		return (print_ret("Error\n", -1));
-	while (b->top && !ilst_is_sorted(a->top))
+	while (b->top && !ilst_is_sorted(ASCENDING_ORDER, a->top))
 		sort_stack(&a, &b);
 	str = NULL;
 	free(str);
