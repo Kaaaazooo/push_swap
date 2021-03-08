@@ -1,7 +1,7 @@
 #include "libps.h"
 #include "stdio.h"
 
-void	swap(t_stack *lst)
+void	swap(t_ilst *lst)
 {
 	int64_t	val;
 
@@ -12,7 +12,7 @@ void	swap(t_stack *lst)
 	lst->val = val;
 }
 
-void	swap_s(t_stack *a, t_stack *b)
+void	swap_s(t_ilst *a, t_ilst *b)
 {
 	swap(a);
 	swap(b);

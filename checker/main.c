@@ -19,36 +19,36 @@ int	print_ret(char *str, int ret)
 	return (ret);
 }
 
-int	stack_operations(t_stack **a, t_stack **b, char *str)
+int	stack_operations(t_stack *a, t_stack *b, char *str)
 {
 	if (ft_strcmp("sa", str) == 0)
-		swap(*a);
+		swap(a->top);
 	else if (ft_strcmp("sb", str) == 0)
-		swap(*b);
+		swap(b->top);
 	else if (ft_strcmp("ss", str) == 0)
-		swap_s(*a, *b);
+		swap_s(a->top, b->top);
 	else if (ft_strcmp("pa", str) == 0)
-		push(a, b);
+		push(&a, &b);
 	else if (ft_strcmp("pb", str) == 0)
-		push(b, a);
+		push(&b, &a);
 	else if (ft_strcmp("ra", str) == 0)
-		rotate(*a);
+		rotate(a->top);
 	else if (ft_strcmp("rb", str) == 0)
-		rotate(*b);
+		rotate(b->top);
 	else if (ft_strcmp("rr", str) == 0)
-		rotate_s(*a, *b);
+		rotate_s(a->top, b->top);
 	else if (ft_strcmp("rra", str) == 0)
-		r_rotate(*a);
+		r_rotate(a->top);
 	else if (ft_strcmp("rrb", str) == 0)
-		r_rotate(*b);
+		r_rotate(b->top);
 	else if (ft_strcmp("rrr", str) == 0)
-		r_rotate_s(*a, *b);
+		r_rotate_s(a->top, b->top);
 	else
 		return (-1);
 	return (0);
 }
 
-int	check_stacks(t_stack *a, t_stack *b)
+int	check_ilsts(t_ilst *a, t_ilst *b)
 {
 	int64_t	val;
 
@@ -72,19 +72,19 @@ int	check_stacks(t_stack *a, t_stack *b)
 //	print_stack(b);
 int	main(int ac, char **av)
 {
-	t_stack *a;
-	t_stack *b;
+	t_stack a;
+	t_stack b;
 	char	*str;
 
-	a = NULL;
-	b = NULL;
+	ft_bzero(&a, sizeof(t_stack));
+	ft_bzero(&b, sizeof(t_stack));
 	while (--ac > 0)
 	{
 		if (!is_digit_str(av[ac]))
 			return (print_ret("Error\n", -1));
 		stack_add_front(&a, ft_atoi(av[ac]));
 	}
-	if (a == NULL)
+	if (a.top == NULL)
 		return (print_ret("Error\n", -1));
 	str = NULL;
 	while (get_next_line(0, &str) > 0)
@@ -95,7 +95,7 @@ int	main(int ac, char **av)
 		str = NULL;
 	}
 	free(str);
-	check_stacks(a, b);
+	check_ilsts(a.top, b.top);
 	str = NULL;
-	return (stack_free_all(a) | stack_free_all(b));
+	return (ilst_free_all(a.top) | ilst_free_all(b.top));
 }

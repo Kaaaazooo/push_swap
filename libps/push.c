@@ -2,12 +2,14 @@
 
 void	push(t_stack **dst, t_stack **src)
 {
-	t_stack	*tmp;
+	t_ilst	*tmp;
 
-	if (*src == NULL)
+	if ((*src)->top == NULL)
 		return ;
-	tmp = *dst;
-	*dst = *src;
-	*src = (*src)->next;
-	(*dst)->next = tmp;
+	tmp = (*dst)->top;
+	(*dst)->top = (*src)->top;
+	(*src)->top = (*src)->top->next;
+	if ((*src)->top == NULL)
+		(*src)->end = NULL;
+	(*dst)->top->next = tmp;
 }

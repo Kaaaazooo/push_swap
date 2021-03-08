@@ -1,8 +1,8 @@
 #include "libps.h"
 
-void	rotate(t_stack *lst)
+void	rotate(t_ilst *lst)
 {
-	t_stack	*tmp;
+	t_ilst	*tmp;
 	int64_t	val;
 
 	if (lst == NULL || lst->next == NULL)
@@ -17,15 +17,15 @@ void	rotate(t_stack *lst)
 	tmp->val = val;
 }
 
-void	rotate_s(t_stack *a, t_stack *b)
+void	rotate_s(t_ilst *a, t_ilst *b)
 {
 	rotate(a);
 	rotate(b);
 }
 
-void	r_rotate(t_stack *lst)
+void	r_rotate(t_ilst *lst)
 {
-	t_stack	*tmp;
+	t_ilst	*tmp;
 	int64_t	val;
 	int64_t	tmp_val;
 
@@ -43,7 +43,7 @@ void	r_rotate(t_stack *lst)
 	lst->val = tmp_val;
 }
 
-void	r_rotate_s(t_stack *a, t_stack *b)
+void	r_rotate_s(t_ilst *a, t_ilst *b)
 {
 	r_rotate(a);
 	r_rotate(b);

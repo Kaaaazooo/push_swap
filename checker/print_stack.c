@@ -1,8 +1,8 @@
 #include "checker.h"
 
-void	print_stack(t_stack *lst)
+void	print_ilst(t_ilst *lst)
 {
-	t_stack	*tmp;
+	t_ilst	*tmp;
 	tmp = lst;
 	while (tmp)
 	{

@@ -4,6 +4,6 @@
 # include "libft.h"
 # include "libps.h"
 
-void	print_stack(t_stack *lst);
+void	print_ilst(t_ilst *lst);
 
 #endif

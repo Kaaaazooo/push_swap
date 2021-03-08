@@ -2,21 +2,24 @@ NAME = checker
 
 LIBFT_P = ../libft
 LIBPS_P = ../libps
+UTILS_P = ../utils
 HEADER = includes
 
-OPTIONS = -I $(LIBFT_P)/includes -I $(LIBPS_P)/. -I .
+OPTIONS = -I $(LIBFT_P)/includes -I $(LIBPS_P)/. -I $(UTILS_P) -I .
 CFLAGS = -Wall -Werror -Wextra $(OPTIONS)
 LDFLAGS = -L $(LIBFT_P) -lft -L $(LIBPS_P) -lps
 
 SRCS = $(addprefix ./, main.c print_stack.c)
+UTILS = $(addprefix ../utils/, utils.c)
 
 CC = gcc
 
 all: $(NAME)
 
 OBJS = $(SRCS:.c=.o)
+UTILS_OBJS = $(UTILS:.c=.o)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(UTILS_OBJS)
 	make -C $(LIBFT_P)
 	make -C $(LIBPS_P)
 	$(CC) $(CFLAGS) -o ./checker $(OBJS) $(LDFLAGS)
@@ -24,7 +27,7 @@ $(NAME): $(OBJS)
 clean:
 	make -C $(LIBFT_P) clean
 	make -C $(LIBPS_P) clean
-	rm -rf $(OBJS)
+	rm -rf $(OBJS) $(UTILS_OBJS)
 
 fclean: clean
 	rm -rf $(LIBFT_P)/libft.a

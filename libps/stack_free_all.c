@@ -1,8 +1,8 @@
 #include "libps.h"
 
-int	stack_free_all(t_stack *lst)
+int	ilst_free_all(t_ilst *lst)
 {
-	t_stack	*next;
+	t_ilst	*next;
 	while (lst)
 	{
 		next = lst->next;
