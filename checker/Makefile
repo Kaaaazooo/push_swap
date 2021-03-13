@@ -9,8 +9,8 @@ OPTIONS = -I $(LIBFT_P)/includes -I $(LIBPS_P)/. -I $(UTILS_P) -I .
 CFLAGS = -Wall -Werror -Wextra $(OPTIONS)
 LDFLAGS = -L $(LIBFT_P) -lft -L $(LIBPS_P) -lps
 
-SRCS = $(addprefix ./, main.c print_stack.c)
-UTILS = $(addprefix ../utils/, utils.c)
+SRCS = $(addprefix ./, main.c)
+UTILS = $(addprefix ../utils/, utils.c print_ilst.c)
 
 CC = gcc
 
@@ -22,7 +22,7 @@ UTILS_OBJS = $(UTILS:.c=.o)
 $(NAME): $(OBJS) $(UTILS_OBJS)
 	make -C $(LIBFT_P)
 	make -C $(LIBPS_P)
-	$(CC) $(CFLAGS) -o ./checker $(OBJS) $(LDFLAGS)
+	$(CC) $(CFLAGS) -o ./checker $(OBJS) $(UTILS_OBJS) $(LDFLAGS)
 
 clean:
 	make -C $(LIBFT_P) clean

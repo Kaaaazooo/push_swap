@@ -18,7 +18,8 @@ HEADER = .
 OPTIONS = -I $(HEADER)
 CFLAGS = -Wall -Werror -Wextra $(OPTIONS)
 
-SRCS = push.c swap.c rotate.c stack_add_front.c stack_free_all.c
+SRCS = push.c swap.c rotate.c stack_add_front.c \
+	ilst_free_all.c ilst_is_sorted.c ilst_count_sorted.c
 
 OBJS = $(SRCS:.c=.o)
 

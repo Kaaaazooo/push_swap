@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include "libps.h"
+# include "utils.h"
 
 void	print_ilst(t_ilst *lst);
 

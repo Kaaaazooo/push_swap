@@ -6,7 +6,4 @@
 # include "libps.h"
 # include "utils.h"
 
-# define ASCENDING_ORDER 1
-# define DESCENDING_ORDER 2
-
 #endif

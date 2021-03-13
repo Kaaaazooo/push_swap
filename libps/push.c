@@ -21,7 +21,11 @@ void	push(t_stack **dst, t_stack **src)
 	tmp = (*dst)->top;
 	(*dst)->top = (*src)->top;
 	(*src)->top = (*src)->top->next;
+	--(*src)->size;
+	++(*dst)->size;
 	if ((*src)->top == NULL)
 		(*src)->end = NULL;
+	if (tmp == NULL)
+		(*dst)->end = (*dst)->top;
 	(*dst)->top->next = tmp;
 }
