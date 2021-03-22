@@ -6,40 +6,53 @@
 /*   By: sabrugie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 12:49:09 by sabrugie          #+#    #+#             */
-/*   Updated: 2021/03/08 12:49:11 by sabrugie         ###   ########.fr       */
+/*   Updated: 2021/03/22 19:16:47 by sabrugie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libps.h"
 
-void	rotate(t_ilst *lst)
+void	rotate(char c, t_ilst **lst)
 {
 	t_ilst	*tmp;
+	t_ilst	*tmp1;
 	int64_t	val;
+	char	str[3];
 
-	if (lst == NULL || lst->next == NULL)
+	if (*lst == NULL || (*lst)->next == NULL)
 		return ;
-	tmp = lst;
-	val = lst->val;
-	while (tmp->next)
+	tmp = *lst;
+	while ((*lst)->next)
 	{
-		tmp->val = tmp->next->val;
-		tmp = tmp->next;
+		tmp1 = *lst;
+		*lst = (*lst)->next;
 	}
-	tmp->val = val;
+	(*lst)->next = tmp;
+	(*lst) = tmp1;
+	(*lst)->next = NULL;
+	if (c)
+	{
+		str[0] = 'r';
+		str[1] = c;
+		str[2] = '\n';
+		write(1, str, 3);
+	}
 }
 
-void	rotate_s(t_ilst *a, t_ilst *b)
+void	rotate_s(char c, t_ilst *a, t_ilst *b)
 {
-	rotate(a);
-	rotate(b);
+	rotate(0, a);
+	rotate(0, b);
+	if (c)
+		write(1, "rr\n", 3);
 }
 
-void	r_rotate(t_ilst *lst)
+void	r_rotate(char c, t_ilst *lst)
 {
 	t_ilst	*tmp;
 	int64_t	val;
 	int64_t	tmp_val;
+	char	str[4];
 
 	if (lst == NULL || lst->next == NULL)
 		return ;
@@ -53,10 +66,20 @@ void	r_rotate(t_ilst *lst)
 		tmp->val = val;
 	}
 	lst->val = tmp_val;
+	if (c)
+	{
+		str[0] = 'r';
+		str[1] = 'r';
+		str[2] = c;
+		str[3] = '\n';
+		write(1, str, 4);
+	}
 }
 
-void	r_rotate_s(t_ilst *a, t_ilst *b)
+void	r_rotate_s(char c, t_ilst *a, t_ilst *b)
 {
-	r_rotate(a);
-	r_rotate(b);
+	r_rotate(0, a);
+	r_rotate(0, b);
+	if (c)
+		write(1, "rrr\n", 4);
 }

@@ -6,7 +6,7 @@
 /*   By: sabrugie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 12:49:17 by sabrugie          #+#    #+#             */
-/*   Updated: 2021/03/08 12:49:18 by sabrugie         ###   ########.fr       */
+/*   Updated: 2021/03/22 18:00:24 by sabrugie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	stack_add_front(t_stack *dst, int64_t val)
 		dst->end = new;
 	}
 	new->val = val;
+	new->chunk = 0;
 	new->next = dst->top;
 	dst->top = new;
 }
