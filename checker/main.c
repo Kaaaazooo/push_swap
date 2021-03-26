@@ -35,7 +35,7 @@ int	main(int ac, char **av)
 			return (print_ret("Error\n", -1));
 		stack_add_front(&a, ft_atoi(av[ac]));
 	}
-	if (a.top == NULL)
+	if (a.top == NULL || check_duplicates(a.top, a.size))
 		return (print_ret("Error\n", -1));
 	str = NULL;
 	while (get_next_line(0, &str) > 0)

@@ -19,7 +19,8 @@ OPTIONS = -I $(HEADER)
 CFLAGS = -Wall -Werror -Wextra $(OPTIONS)
 
 SRCS = push.c swap.c rotate.c stack_add_front.c \
-	ilst_free_all.c ilst_is_sorted.c ilst_count_sorted.c
+	ilst_free_all.c ilst_is_sorted.c ilst_count_sorted.c \
+	sort_array.c check_duplicates.c
 
 OBJS = $(SRCS:.c=.o)
 

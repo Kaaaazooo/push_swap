@@ -23,9 +23,14 @@ void	print_ilst(t_ilst *lst)
 		if (tmp->next)
 		{
 			if (tmp->next->chunk != tmp->chunk)
+<<<<<<< HEAD
 				write(1, " |", 1);
+=======
+				ft_printf(" |");
+>>>>>>> working push_swap and checker | duplicates checking added
 			write(1, " ", 1);
 		}
 		tmp = tmp->next;
+//		usleep(100000);
 	}
 }

@@ -16,13 +16,23 @@
 void	swap(char c, t_ilst *lst)
 {
 	int64_t	val;
+<<<<<<< HEAD
+=======
+	int64_t	chunk;
+>>>>>>> working push_swap and checker | duplicates checking added
 	char	str[3];
 
 	if (lst->next == NULL)
 		return ;
 	val = lst->next->val;
+	chunk = lst->next->chunk;
 	lst->next->val = lst->val;
+	lst->next->chunk = lst->chunk;
 	lst->val = val;
+<<<<<<< HEAD
+=======
+	lst->chunk = chunk;
+>>>>>>> working push_swap and checker | duplicates checking added
 	if (c)
 	{
 		str[0] = 's';
@@ -32,10 +42,17 @@ void	swap(char c, t_ilst *lst)
 	}
 }
 
+<<<<<<< HEAD
 void	swap_s(char c, t_ilst *a, t_ilst *b)
 {
 	swap(0, a);
 	swap(0, b);
 	if (c)
 		write(1, "ss\n", 3);
+=======
+void	swap_s(char c1, char c2, t_ilst *a, t_ilst *b)
+{
+	swap(c1, a);
+	swap(c2, b);
+>>>>>>> working push_swap and checker | duplicates checking added
 }
