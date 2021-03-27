@@ -9,7 +9,7 @@ OPTIONS = -I $(LIBFT_P)/includes -I $(LIBPS_P)/. -I $(UTILS_P) -I .
 CFLAGS = -Wall -Werror -Wextra $(OPTIONS)
 LDFLAGS = -L $(LIBFT_P) -lft -L $(LIBPS_P) -lps
 
-SRCS = $(addprefix ./, main.c)
+SRCS = main.c chunk_functions.c mid_sort.c fill_a.c get_median.c
 UTILS = $(addprefix ../utils/, utils.c print_ilst.c)
 
 CC = gcc

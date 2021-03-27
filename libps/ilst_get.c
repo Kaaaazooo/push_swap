@@ -1,25 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ilst_get.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabrugie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/08 12:37:11 by sabrugie          #+#    #+#             */
-/*   Updated: 2021/03/27 18:58:16 by sabrugie         ###   ########.fr       */
+/*   Created: 2021/03/27 17:59:29 by sabrugie          #+#    #+#             */
+/*   Updated: 2021/03/27 18:02:02 by sabrugie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "libps.h"
 
-# include "libft.h"
-# include "libps.h"
+int64_t	get_min(t_ilst *lst)
+{
+	int64_t	val;
 
-int		is_digit_str(char *str);
-int		print_ret(char *str, int ret);
-int		stack_operations(t_stack *a, t_stack *b, char *str);
-int		check_ilsts(t_ilst *a, t_ilst *b);
-void	print_ilst(t_ilst *lst);
+	if (lst == NULL)
+		return (0);
+	val = INT64_MAX;
+	while (lst)
+	{
+		if (lst->val < val)
+			val = lst->val;
+		lst = lst->next;
+	}
+	return (val);
+}
 
-#endif
+int64_t	get_max(t_ilst *lst)
+{
+	int64_t	val;
+
+	if (lst == NULL)
+		return (0);
+	val = INT64_MIN;
+	while (lst)
+	{
+		if (lst->val > val)
+			val = lst->val;
+		lst = lst->next;
+	}
+	return (val);
+}

@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_array.c                                       :+:      :+:    :+:   */
+/*   fill_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabrugie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 18:57:30 by sabrugie          #+#    #+#             */
-/*   Updated: 2021/03/27 18:57:32 by sabrugie         ###   ########.fr       */
+/*   Created: 2021/03/27 18:03:21 by sabrugie          #+#    #+#             */
+/*   Updated: 2021/03/27 18:03:51 by sabrugie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libps.h"
+#include "push_swap.h"
 
-void	sort_array(int64_t *tab, int32_t size)
+void	fill_a(t_stack **a, t_stack **b)
 {
-	int64_t	c;
-	int64_t	d;
-	int64_t	t;
-
-	c = 0;
-	while (c < (int64_t)(size - 1))
+	if ((*b)->top && (*b)->top->val > (*a)->top->val)
 	{
-		d = 0;
-		while (d < ((int64_t)size - 1) - c)
-		{
-			if (tab[d] > tab[d + 1])
-			{
-				t = tab[d];
-				tab[d] = tab[d + 1];
-				tab[d + 1] = t;
-			}
-			++d;
-		}
-		++c;
+		while ((*b)->top && (*a)->end->val > (*b)->top->val)
+			r_rotate('a', *a);
 	}
+	while ((*b)->top)
+	{
+		if ((*a)->end->val < (*a)->top->val && (*a)->end->val > (*b)->top->val)
+			r_rotate('a', *a);
+		else
+			push('a', a, b);
+	}
+	while ((*a)->end->val < (*a)->top->val)
+		r_rotate('a', *a);
 }

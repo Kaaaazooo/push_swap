@@ -6,7 +6,7 @@
 /*   By: sabrugie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 12:37:02 by sabrugie          #+#    #+#             */
-/*   Updated: 2021/03/22 17:27:41 by sabrugie         ###   ########.fr       */
+/*   Updated: 2021/03/27 19:41:17 by sabrugie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,41 +38,23 @@ int	stack_operations(t_stack *a, t_stack *b, char *str)
 	else if (ft_strcmp("sb", str) == 0)
 		swap(0, b->top);
 	else if (ft_strcmp("ss", str) == 0)
-<<<<<<< HEAD
 		swap_s(0, a->top, b->top);
-=======
-		swap_s(0, 0, a->top, b->top);
->>>>>>> working push_swap and checker | duplicates checking added
 	else if (ft_strcmp("pa", str) == 0)
 		push(0, &a, &b);
 	else if (ft_strcmp("pb", str) == 0)
 		push(0, &b, &a);
 	else if (ft_strcmp("ra", str) == 0)
-<<<<<<< HEAD
-		rotate(0, a->top);
-	else if (ft_strcmp("rb", str) == 0)
-		rotate(0, b->top);
-	else if (ft_strcmp("rr", str) == 0)
-		rotate_s(0, a->top, b->top);
-	else if (ft_strcmp("rra", str) == 0)
-		r_rotate(0, a->top);
-	else if (ft_strcmp("rrb", str) == 0)
-		r_rotate(0, b->top);
-	else if (ft_strcmp("rrr", str) == 0)
-		r_rotate_s(0, a->top, b->top);
-=======
 		rotate(0, a);
 	else if (ft_strcmp("rb", str) == 0)
 		rotate(0, b);
 	else if (ft_strcmp("rr", str) == 0)
-		rotate_s(0, 0, a, b);
+		rotate_s(0, a, b);
 	else if (ft_strcmp("rra", str) == 0)
 		r_rotate(0, a);
 	else if (ft_strcmp("rrb", str) == 0)
 		r_rotate(0, b);
 	else if (ft_strcmp("rrr", str) == 0)
-		r_rotate_s(0, 0, a, b);
->>>>>>> working push_swap and checker | duplicates checking added
+		r_rotate_s(0, a, b);
 	else
 		return (-1);
 	return (0);

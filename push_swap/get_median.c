@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ilst_is_sorted.c                                   :+:      :+:    :+:   */
+/*   get_median.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabrugie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 18:57:16 by sabrugie          #+#    #+#             */
-/*   Updated: 2021/03/27 18:57:17 by sabrugie         ###   ########.fr       */
+/*   Created: 2021/03/27 18:38:55 by sabrugie          #+#    #+#             */
+/*   Updated: 2021/03/27 18:39:04 by sabrugie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libps.h"
+#include "push_swap.h"
 
-int	ilst_is_sorted(uint8_t flag, t_ilst *lst)
+int64_t	get_median(t_ilst *lst, int32_t size)
 {
-	int64_t	val;
+	int64_t	*values;
+	int64_t	median;
+	int		i;
 
-	val = INT64_MIN;
-	if (flag == D_ORDER)
-		val = INT64_MAX;
-	while (lst)
+	if (!lst || size == 0)
+		exit(0);
+	values = malloc(sizeof(int64_t) * size);
+	if (!values)
 	{
-		if (flag == A_ORDER)
-		{
-			if (lst->val > val)
-				val = lst->val;
-			else if (lst->val < val)
-				return (0);
-		}
-		else if (flag == D_ORDER)
-		{
-			if (lst->val < val)
-				val = lst->val;
-			else if (lst->val > val)
-				return (0);
-		}
-		lst = lst->next;
+		ft_printf("malloc failed\n");
+		exit(0);
 	}
-	return (1);
+	i = 0;
+	while (i < size)
+	{
+		values[i] = lst->val;
+		lst = lst->next;
+		++i;
+	}
+	sort_array(values, size);
+	median = values[size / 2];
+	free(values);
+	return (median);
 }
